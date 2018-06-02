@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.gs.leaf.mapper.UserMapper">
+    <!-- id:statement的id 或者叫做sql的id-->
+    <!-- parameterType:声明输入参数的类型 -->
+    <!-- resultType:声明输出结果的类型，应该填写pojo的全路径 -->
+    <!-- #{}：输入参数的占位符，相当于jdbc的？ -->
+    <select id="queryUserById" parameterType="Integer"
+            resultType="com.gs.leaf.pojo.User">
+        SELECT * FROM `tb_user` WHERE id  = #{id}
+    </select>
+
+    <select id="queryUserListByUserName" parameterType="String"
+            resultType="com.gs.leaf.pojo.User">
+        SELECT * FROM `tb_user` WHERE username  like "%"#{value}"%"
+    </select>
+
+   <!-- <insert id="insertUserToDb"  parameterType="com.gs.leaf.pojo.User" >
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            SELECT  LAST_INSERT_ID()
+        </selectKey>
+         insert into tb_user(username,password,phone,email,created,updated)
+          values(#{username},#{password},#{phone},#{email},#{created},#{updated})
+    </insert>-->
+    <insert id="insertUserToDb" keyProperty="id" useGeneratedKeys="true" parameterType="com.gs.leaf.pojo.User" >
+         insert into tb_user(username,password,phone,email,created,updated)
+          values(#{username},#{password},#{phone},#{email},#{created},#{updated})
+    </insert>
+
+    <update id="updateUserById" parameterType="com.gs.leaf.pojo.User" >
+        UPDATE tb_user SET username=#{username},phone=#{phone},email=#{email},password=#{password},created=#{created},
+        updated=#{updated} WHERE id=#{id}
+    </update>
+
+
+
+</mapper>
