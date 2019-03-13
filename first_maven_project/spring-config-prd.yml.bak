@@ -1,4 +1,0 @@
-com:
-  springcloud:
-    book:
-      config: I am the git configuration file from prd environment.
