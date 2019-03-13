@@ -1,4 +1,4 @@
 com:
   springcloud:
     book:
-      config: I am the git configuration file from prd environment.
+      config: I am the git configuration file from prd  12222 environment.
