@@ -1,0 +1,3 @@
+mybatis:
+  type-aliases-package: com.gs.leaf.pojo
+  mapper-locations: classpath:mapper/*.xml

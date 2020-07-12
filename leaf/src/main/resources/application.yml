@@ -1,0 +1,10 @@
+server:
+  port: 8080
+  session:
+    timeout: 60
+  tomcat:
+    max-threads: 200
+    uri-encoding: UTF-8
+spring:
+  profiles:
+    active: template #mybatis,redis,template,druidDataSource

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>	</title>
+    <link rel="stylesheet" href="" />
+
+</head>
+<body>
+<h1 th:text="${resource.name}">${resource.name}</h1>
+<h1 th:text="${resource.domain}">${resource.domain}</h1>
+<h1 th:text="${resource.lang}">${resource.lang}</h1>
+
+<input th:value="${resource.name}" />
+
+
+<div th:object="${resource}">
+    <input th:value="*{name}"/>
+    <input th:value="*{domain}"/>
+    <input th:value="*{lang}"/>
+    <input th:value="*{#dates.format(date,'yyyy-MM-dd HH:mm:ss')}"/>
+</div>
+
+<div>
+    <form th:action="@{/thymeleaf/postform}" th:object="${user}" method="post" th:method="post">
+        <input type="text" th:field="*{name}" />
+        <input type="submit" th:value="Submit" />
+    </form>
+</div>
+
+
+
+<!--thymeleaf 引入js-->
+<script th:src="@{/static/js/index.js}"></script>
+
+</body>
+
+</html>
